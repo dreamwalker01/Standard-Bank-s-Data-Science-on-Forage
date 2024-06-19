@@ -1,0 +1,76 @@
+<! REFERRED FROM KRISH NAIK SIR'S GITHUB CODE >
+
+<!DOCTYPE html>
+<html>
+<!-- From https://codepen.io/frytyler/pen/EGdtg -->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="login">
+    <h1>Approval of Loan Application (1 for Yes/0 for No)</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="form-group">
+        <label>Gender (1 for Male / 0 for Female)</label>
+        <input type="text" name="Gender" placeholder="Gender" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Married (1 for Yes / 0 for No)</label>
+        <input type="text" name="Married" placeholder="Married" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Dependents (Number of Dependents)</label>
+        <input type="text" name="Dependents" placeholder="Dependents" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Education (0 for Graduate / 1 for Not Graduate)</label>
+        <input type="text" name="Education" placeholder="Education" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Self Employed (1 for Yes / 0 for No)</label>
+        <input type="text" name="Self_Employed" placeholder="Self Employed" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Applicant's Income</label>
+        <input type="text" name="ApplicantIncome" placeholder="Applicant's Income" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Coapplicant's Income</label>
+        <input type="text" name="CoapplicantIncome" placeholder="Coapplicant's Income" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Loan Amount</label>
+        <input type="text" name="LoanAmount" placeholder="Loan Amount" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Loan Amount Term</label>
+        <input type="text" name="Loan_Amount_Term" placeholder="Loan Amount Term" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Credit History (1 for Yes / 0 for No)</label>
+        <input type="text" name="Credit_History" placeholder="Credit History" required="required" />
+      </div>
+      <div class="form-group">
+        <label>Property Area (Urban-2 / Semiurban-1 / Rural-0)</label>
+        <input type="text" name="Property_Area" placeholder="Property Area" required="required" />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+  </div>
+</body>
+</html>
